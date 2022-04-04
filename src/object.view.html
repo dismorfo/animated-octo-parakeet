@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+  <style>
+    #app {
+      position: relative;
+      height: 500px;
+    }
+  </style>
+  <div id="app" data-manifest="{{object.manifest}}" data-sequence="{{object.sequence}}"></div>
+  <br>
+  <div class="container">
+    <div class="box">
+      {% include 'pagination.html' %}
+    </div>
+  </div>
+{% endblock %}

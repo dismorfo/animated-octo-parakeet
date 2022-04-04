@@ -1,0 +1,54 @@
+{% extends "main.content.html" %}
+
+{% block content %}
+  <style>
+    #app {
+      /* position: relative; */
+      height: 500px;
+    }
+    .openseadragon-pagination .pagination .page-link {
+      border-radius: inherit;
+    }
+  </style>
+  <div id="app"
+    data-tilesource="{{object.tilesource}}"
+    data-manifest="{{object.manifest}}" 
+    data-sequence="{{object.sequence}}">
+  </div>
+  <script src="//openseadragon.github.io/openseadragon/openseadragon.min.js"></script>
+  <br>
+  {% if maxPage > 1 %}
+  <div class="container openseadragon-pagination">
+    <div class="box">
+      {% include 'pagination.html' %}
+    </div>
+  </div>
+  {% endif %}
+  <script>
+    const Y = {};
+    const elm = document.getElementById('app');
+    const { sequence, manifest, tilesource } = elm.dataset;
+    Y.OpenSeadragon = OpenSeadragon;
+    // https://openseadragon.github.io/docs/OpenSeadragon.html#.Options
+    Y.Viewer = Y.OpenSeadragon({
+      id: elm.id,
+      preserveViewport: true,
+      showNavigationControl: true,
+      showZoomControl: true,
+      showHomeControl: false,
+      visibilityRatio: 1,
+      minZoomLevel: 0,
+      showRotationControl: true,
+      showFlipControl: true,
+      defaultZoomLevel: 0,
+      initialPage: sequence - 1,
+      // sequenceMode: true,
+      // collectionMode: true,
+      // collectionRows: 5,
+      prefixUrl: '//openseadragon.github.io/openseadragon/images/',
+      tileSources: tilesource.split(','),
+    });
+  </script>
+  <!-- <script type="text/javascript" src="http://192.168.0.5:8080/findingaids/dist/runtime.8970e5f5.js"></script> -->
+  <!-- <script type="text/javascript" src="http://192.168.0.5:8080/findingaids/dist/app.b1443909.js"></script> -->
+{% endblock %}

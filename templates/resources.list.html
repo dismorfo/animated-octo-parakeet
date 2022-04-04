@@ -1,0 +1,15 @@
+{% extends "main.content.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row row-cols-auto">
+    {% for resource in resources %}
+      <div class="col resource-photo">
+        <a href="{{appRoot}}/{{resource.noid}}/{{resource.sequence}}">
+          <img loading=lazy src="{{resource.url}}" title="{{resource.title}}" alt="{{resource.alt}}" width="{{resource.width}}" height="{{resource.height}}" style="height: {{resource.height}}px; width: {{resource.width}}px;" >
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

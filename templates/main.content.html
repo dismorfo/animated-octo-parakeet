@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block main %}
+  <main id="content" class="content">
+    <div id = "top"></div>
+    <nav aria-label="Breadcrumbs: in Finding Aid hierarchy">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#"><span class="ead-emph ead-emph-italic">Level 2</span> Series I. <span class="ead-persname">Megan O'Shea</span> <span class="ead-name">Rolodex</span> on <span class="ead-corpname">New York University</span> Here is a <span class="ead-title">title</span></a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{imageCountLabel}}</li>
+      </ol>
+    </nav>      
+    <h1>This is a digital object</h1>
+    <div class="dl-permalink"><span>Permalink:</span> {{permalink}}</div>
+    <div>
+      {% block content %}
+      {% endblock %}
+    </div>
+    <section class="next-previous-links">
+      <a class="previous-post" href="#">« Previous <br>This is a digital object</a><a class="next-post" href="#">Next »<br>Envelope 1: Caven Point, NJ, 1984 w/Steve Brown: undated</a>
+    </section>
+  </main>
+{% endblock %}
